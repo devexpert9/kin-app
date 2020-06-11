@@ -1,0 +1,48 @@
+<!--ion-header>
+  <ion-toolbar  color="primary">
+    <ion-title>Call</ion-title>
+	<ion-buttons slot="end" (click)="dismiss()">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+  </ion-toolbar>
+</ion-header-->
+
+<ion-content color="primary">
+<div call-bg>
+    <div close-btn >
+	<ion-buttons slot="end" (click)="dismiss()" class=" ion-fixed">
+	<ion-icon name="close-outline"></ion-icon> 
+	</ion-buttons>
+	</div>
+    <div call-centr>
+        <div class="home-logo">
+			<div class="animatin">
+			    <span><ion-icon name="videocam-sharp"></ion-icon></span>
+			</div>
+				
+		</div>
+		<div call-img>
+			<ion-avatar>
+				<img src="assets/img/profile1.jpg" alt=""/>
+			</ion-avatar>
+			<h2>John Smith</h2>
+			<p>04:32</p>
+		</div>
+<ion-list>
+  <div togle-cntr>
+    <ion-toggle ></ion-toggle>
+    <ion-label>Answer Asap</ion-label>
+  </div>
+
+</ion-list>
+		<div volme-rng>
+			<ion-item lines="none">
+				<ion-range min="-200" max="200" color="secondary">
+					<ion-icon size="small" slot="start" name="volume-off-sharp"></ion-icon>
+					<ion-icon slot="end" name="volume-high-sharp"></ion-icon>
+				</ion-range>
+			</ion-item>
+		</div>		
+    </div>
+</div>
+</ion-content>

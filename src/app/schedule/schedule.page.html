@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <!--ion-buttons  slot="start">
+	   <ion-back-button  defaultHref="/home2">
+	   </ion-back-button>
+    </ion-buttons-->
+    <ion-title>Schedule</ion-title>
+	 <ion-button mar-10 slot="end" color="secondary"  shape="round"  size="small" fill="outline">
+	   <ion-icon name="add"></ion-icon>
+	   New
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+<div calendar-head>
+<h2 vew-mnth>{{viewTitle}} </h2>
+<div btn-right>
+
+<button mnth-btn (click)="abc()" >
+M
+</button>
+
+<button wek-btn (click)="onTimeSelected()">
+W
+</button>
+<button day-btn (click)="abc1()" >
+D
+</button>
+</div>
+</div>
+   <calendar [eventSource]="eventSource"
+       [calendarMode]="calendar.mode"
+       [currentDate]="calendar.currentDate"   
+       (onTitleChanged)="onViewTitleChanged($event)" 
+	   (onTimeSelected)="onTimeSelected($event)"
+       step="30">
+   </calendar>
+
+<div class="scdule-cont">
+<h1>Call Details</h1>
+	   <ion-item-sliding lines="none">
+    <ion-item-options side="end">
+      <ion-item-option color="primary" >Confirm</ion-item-option>
+      <ion-item-option color="secondary">Change</ion-item-option>
+    </ion-item-options>	   
+	   <ion-item lines="none">
+	     <ion-avatar>
+		   <img src="assets/img/profile1.jpg"/>
+	     </ion-avatar>	   
+		 <ion-label>
+
+		 <div class="cldr-sec">
+		 <h2>John Doe</h2>		 
+		     <p>11:30AM - 12AM</p>
+			 
+		 </div>		 
+		 <p>Room No 12</p>
+
+		 </ion-label>
+
+	   </ion-item> 
+	   </ion-item-sliding> 
+</div>
+
+</ion-content>
