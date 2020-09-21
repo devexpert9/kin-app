@@ -8,6 +8,8 @@ import { MessagesPageRoutingModule } from './messages-routing.module';
 
 import { MessagesPage } from './messages.page';
 
+import {TimeAgoPipe} from 'time-ago-pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,6 @@ import { MessagesPage } from './messages.page';
     IonicModule,
     MessagesPageRoutingModule
   ],
-  declarations: [MessagesPage]
+  declarations: [MessagesPage, TimeAgoPipe]
 })
 export class MessagesPageModule {}

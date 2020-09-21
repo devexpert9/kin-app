@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -12,10 +12,12 @@ import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { MonthViewComponent } from 'ionic2-calendar/monthview';
 import { WeekViewComponent } from 'ionic2-calendar/weekview';
 import { DayViewComponent } from 'ionic2-calendar/dayview';
+
 @NgModule({
   imports: [
     CommonModule,NgCalendarModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     SchedulePageRoutingModule
   ],

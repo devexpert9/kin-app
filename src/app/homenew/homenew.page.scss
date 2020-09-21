@@ -30,7 +30,7 @@ ion-content
   {
 	[mn-head]  
 	{
-	    padding-bottom: 40px;
+	    padding-bottom: 10px;
 		ion-button 
 		{
 			margin: 0px;
@@ -128,6 +128,11 @@ p.pos-ab {
 	}
 	[list-head]
 	{
+		padding: 10px 0px;
+
+		ion-segment {
+			padding: 7px;
+		}
 	 h2
 	  {
 		  &[heading]
@@ -222,4 +227,11 @@ span
 	
  }
 
+}
+
+.fix-tabs{
+    position: fixed;
+    width: 94%;
+    bottom: 0;
+    background: #fff;
 }

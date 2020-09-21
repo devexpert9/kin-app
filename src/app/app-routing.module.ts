@@ -109,6 +109,26 @@ const routes: Routes = [
   {
     path: 'add-contact2',
     loadChildren: () => import('./add-contact2/add-contact2.module').then( m => m.AddContact2PageModule)
+  },
+  {
+    path: 'chat-room',
+    loadChildren: () => import('./chat-room/chat-room.module').then( m => m.ChatRoomPageModule)
+  },
+  {
+    path: 'userlist',
+    loadChildren: () => import('./userlist/userlist.module').then( m => m.UserlistPageModule)
+  },
+  {
+    path: 'reschedule',
+    loadChildren: () => import('./reschedule/reschedule.module').then( m => m.ReschedulePageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
+    path: 'videocall',
+    loadChildren: () => import('./videocall/videocall.module').then( m => m.VideocallPageModule)
   }
 ];
 

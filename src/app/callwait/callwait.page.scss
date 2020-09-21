@@ -231,3 +231,42 @@ z-index:1;
 	}
 
 }
+
+.decline {
+    width: 30%;
+    float: right;
+    background: red;
+    /* right: 10%; */
+    position: relative;
+    padding: 2% 8%;
+    text-align: center;
+    border-radius: 21px;
+    font-weight: 800;
+    margin: 0% 10% 8% 10%;
+}
+
+.ans {
+   width: 30%;
+    float: right;
+    background: green;
+    /* right: 10%; */
+    position: relative;
+    padding: 2% 8%;
+    text-align: center;
+    border-radius: 21px;
+    font-weight: 800;
+    margin: 0% 10% 8% 10%;
+}
+
+.reschedule{
+clear: both;
+    width: 38%;
+    
+    background: #b79a14;
+    left: 30%;
+    position: relative;
+    padding: 2% 5.5%;
+    text-align: center;
+    border-radius: 21px;
+    font-weight: 800;
+}

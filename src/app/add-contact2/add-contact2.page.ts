@@ -13,3 +13,4 @@ export class AddContact2Page implements OnInit {
   }
 
 }
+ 
