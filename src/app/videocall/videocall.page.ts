@@ -13,23 +13,21 @@ export class VideocallPage implements OnInit {
 
 	//Create an account on Viagenie (http://numb.viagenie.ca/), and replace {'urls': 'turn:numb.viagenie.ca','credential': 'websitebeaver','username': 'websitebeaver@email.com'} with the information from your account
     servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'}, {'urls': 'stun:stun.l.google.com:8080'}, {'urls': 'turn:numb.viagenie.ca','credential': 'beaver','username': 'webrtc.websitebeaver@gmail.com'}]};
-	pc = new RTCPeerConnection(this.servers);
-  constructor() { 
+	pc: any= new RTCPeerConnection(this.servers);
+ 	 constructor() { 
 
   	
-  	this.pc.onicecandidate = (event => event.candidate?this.sendMessage(this.yourId, JSON.stringify({'ice': event.candidate})):console.log("Sent All Ice") );
-	this.pc.onaddstream = (event => this.friendsVideo.srcObject = event.stream);
-  }
+	  	this.pc.onicecandidate = (event => event.candidate?this.sendMessage(this.yourId, JSON.stringify({'ice': event.candidate})):console.log("Sent All Ice") );
+		this.pc.onaddstream = (event => this.friendsVideo.srcObject = event.stream);
+  	}
 
-  ngOnInit() {
-  	this.yourId = localStorage.getItem('sin_auth_token');
-  	let self  = this;
+  	ngOnInit() {
+	  	this.yourId = localStorage.getItem('sin_auth_token');
+	  	let self  = this;
   	// setTimeout(function(){
-  		self.database.on('child_added', self.readMessage('',this));
+  		self.database.on('child_added', self.readMessage);
   	// }, 1000);
-
-  	
-  }
+  	}
 
 
   	
@@ -37,27 +35,32 @@ export class VideocallPage implements OnInit {
 	
 
 	sendMessage(senderId, data) {
-	    var msg = this.database.push({ sender: senderId, message: data });
+	    var msg = this.database.push({ sender: senderId, message: data});
 	    msg.remove();
 	}
 
-	readMessage(data, self) {
-		// let self = self;
-		self.yourId = localStorage.getItem('sin_auth_token');
+	readMessage(data) {
+		let self = data.val().self;
+    	let servers = {'iceServers': [{'urls': 'stun:stun.services.mozilla.com'}, {'urls': 'stun:stun.l.google.com:8080'}, {'urls': 'turn:numb.viagenie.ca','credential': 'beaver','username': 'webrtc.websitebeaver@gmail.com'}]};
+    	let database = firebase.database().ref();
+		let pc = new RTCPeerConnection(servers);
+		let yourId = localStorage.getItem('sin_auth_token');
 	    var msg = JSON.parse(data.val().message);
 	    console.log(msg);
-	    console.log(self.yourId)
+	    console.log(yourId)
 	    var sender = data.val().sender;
-	    if (sender != self.yourId) {
+	    if (sender != yourId) {
 	        if (msg.ice != undefined)
-	            self.pc.addIceCandidate(new RTCIceCandidate(msg.ice));
+	            pc.addIceCandidate(new RTCIceCandidate(msg.ice));
 	        else if (msg.sdp.type == "offer")
-	            self.pc.setRemoteDescription(new RTCSessionDescription(msg.sdp))
-	              .then(() =>self.pc.createAnswer())
-	              .then(answer => self.pc.setLocalDescription(answer))
-	              .then(() => self.sendMessage(self.yourId, JSON.stringify({'sdp':self.pc.localDescription})));
+	            pc.setRemoteDescription(new RTCSessionDescription(msg.sdp))
+	              .then(() =>pc.createAnswer())
+	              .then(answer => pc.setLocalDescription(answer))
+	              .then(() => {
+	              	database.push({'sender': yourId, 'message': JSON.stringify({'sdp':pc.localDescription}) });
+	              })
 	        else if (msg.sdp.type == "answer")
-	            self.pc.setRemoteDescription(new RTCSessionDescription(msg.sdp));
+	            pc.setRemoteDescription(new RTCSessionDescription(msg.sdp));
 	    }
 	};
 

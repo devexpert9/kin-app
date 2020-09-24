@@ -22,7 +22,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 //const config: SocketIoConfig = { url: 'http://35.153.16.86', options: {} };
-const config: SocketIoConfig = { url: 'http://3.129.62.251:3001', options: {} };
+const config: SocketIoConfig = { url: 'http://3.16.155.153:3001', options: {} };
 
 
 
