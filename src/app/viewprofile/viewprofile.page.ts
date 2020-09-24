@@ -25,7 +25,7 @@ export class ViewprofilePage implements OnInit {
   loading:any;
   profiles:any;
   clickedProfile:any = JSON.parse(localStorage.getItem('clickedProfile'));
-  imageUrl: any = 'http://3.16.155.153:3000/images/';
+  imageUrl: any = 'http://18.191.231.244:3000/images/';
 
   eventSource;
   viewTitle;

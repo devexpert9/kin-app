@@ -57,7 +57,8 @@ export class VideocallPage implements OnInit {
 	              .then(() =>pc.createAnswer())
 	              .then(answer => pc.setLocalDescription(answer))
 	              .then(() => {
-	              	database.push({'sender': yourId, 'message': JSON.stringify({'sdp':pc.localDescription}) });
+	              	var msg = database.push({'sender': yourId, 'message': JSON.stringify({'sdp':pc.localDescription}) });
+	              	msg.remove();
 	              })
 	        else if (msg.sdp.type == "answer")
 	            pc.setRemoteDescription(new RTCSessionDescription(msg.sdp));

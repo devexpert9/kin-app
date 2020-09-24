@@ -20,7 +20,7 @@ export class AddmembersPage implements OnInit {
   room: any = '';
   dob: any  = '';
   image: any  = '';
-  imageUrl: any = 'http://3.16.155.153:3000/images/';
+  imageUrl: any = 'http://18.191.231.244:3000/images/';
   profiles: any;
   errors : any  = ['',null,undefined];
   loading:any;
@@ -139,7 +139,7 @@ export class AddmembersPage implements OnInit {
       console.log('here')
     // Destination URL
     // var url = config.API_URL + "/addPost";
-    var url = "http://3.16.155.153:3000/upload_image";
+    var url = "http://18.191.231.244:3000/upload_image";
 
     // File for Upload
     var targetPath = this.image;

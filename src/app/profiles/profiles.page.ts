@@ -21,7 +21,7 @@ export class ProfilesPage implements OnInit {
   errors : any  = ['',null,undefined];
   loading:any;
   signupForm: FormGroup;
-  imageUrl: any = 'http://3.16.155.153:3000/images/';
+  imageUrl: any = 'http://18.191.231.244:3000/images/';
   
   constructor(public modalController: ModalController, public toastController: ToastController, public userService: UserService, public loadingController: LoadingController, public router: Router, private platform: Platform, public fb: FormBuilder, private globalFooService: GlobalFooService) {
 
